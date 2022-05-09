@@ -1,7 +1,11 @@
 import os
 import shutil
 from tempfile import TemporaryFile
-from zipfile import ZipFile
+try:
+    from oletools.thirdparty.xxxzip.zipfile import Zipfile
+except:
+    from zipfile import ZipFile
+
 from glob import fnmatch
 from xml.etree import ElementTree
 from io import BytesIO
