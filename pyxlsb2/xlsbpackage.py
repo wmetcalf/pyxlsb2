@@ -68,7 +68,9 @@ class XlsbPackage(ZipPackage):
     def get_workbook_part(self):
         ret = self.get_file('xl/workbook.bin')
         if not ret:
-          ret = self.get_file('xl\\workbook.bin')
+            ret = self.get_file('xl\\workbook.bin')
+        if ret is None:
+            raise AttributeError("xl/workbook.bin not found in archive")
         return ret
     def get_workbook_rels(self):
         ret = self.get_xml_file('xl/_rels/workbook.bin.rels')
